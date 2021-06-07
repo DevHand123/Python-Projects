@@ -1,0 +1,47 @@
+from time import sleep
+
+counter = 0
+while True:
+    new = str(input('\033[33mDigite Y para criar um novo cadastro: \033[m')).lower().strip()
+    if new == 'y':
+        break
+print('CARREGANDO...')
+print('-=- ' * 30)
+sleep(3)
+
+NewUser = str(input('Digite um novo nome de usuário: ')).lower().strip()
+NewPass = str(input('Digite uma nova senha: ')).lower().strip()
+print('\033[32mSua conta foi registrada com sucesso! \033[m \n')
+
+input('Aperte Enter para preencher seu login ')
+print('-=- ' * 30)
+
+# Anti-Campos Nulos
+while True:
+    while True:
+        nulo = ''
+        User = str(input('Digite seu nome de usuário: ')).lower().strip()
+        if User != nulo:
+            break
+        elif User == nulo:
+            print('\033[31mPreencha o campo obrigatório \033[m')
+
+    while True:
+        nulo = ''
+        Pass = str(input('Digite sua senha: ')).lower().strip()
+        if Pass != nulo:
+            break
+        elif User == nulo:
+            print('\033[31mPreencha o campo obrigatório \033[m')
+
+
+    # Login Total
+    if User == NewUser and Pass == NewPass:
+        print('\033[32mAcesso liberado')
+        break
+    elif counter == 5:
+        print('\033[31m| Você fez mais de 5 tentativas, tente novamente mais tarde | \033[31m')
+        break
+    else:
+        print('\033[31mSenha ou nome de usuário incorreto \033[m')
+        counter += 1
